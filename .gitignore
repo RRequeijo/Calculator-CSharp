@@ -1,8 +1,8 @@
 .vs/
 
-obj/
+Calculator-CSharp/obj/
 
-bin/
+Calculator-CSharp/bin/
 
 *.bkp
 
