@@ -2,9 +2,6 @@
 {
     using System;
 
-    /// <summary>
-    /// <see cref="Calculadora"/>
-    /// </summary>
     internal class Calculadora
     {
         /// <summary>
