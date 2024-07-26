@@ -10,132 +10,119 @@
         /// <param name="args">The arguments.</param>
         public static void Main(string[] args)
         {
-            Console.WriteLine("Calculadora");
-            Console.WriteLine("+  Soma \n-  Subtracao \n/  Divisao \n*  Multiplicacao \nr  Resto \n=  Comparar");
-            Console.WriteLine("Digita o simbolo da operação desejada: \n");
+            Console.WriteLine("Calculator");
+            Console.WriteLine("+  Sum \n-  Subtraction \n/  Division \n*  Multiplication");
+            Console.WriteLine("Enter the symbol of the desired operation(enter 0 to end): \n");
             char operacao = Console.ReadLine()[0];
 
-            Console.WriteLine("Valor 1:");
-            double valor1 = Convert.ToDouble(Console.ReadLine());
-
-            Console.WriteLine("Valor 2:");
-            double valor2 = Convert.ToDouble(Console.ReadLine());
-
-            double resultado = 0;
+            double result = 0;
 
             switch (operacao)
             {
                 case '+':
-                    resultado = Somar(valor1, valor2);
-                    Console.WriteLine($"Resultado da Soma de {valor1} por {valor2}: {resultado}");
+                    result = Sum();
+                    Console.WriteLine($"Sum Result:{result}");
                     break;
 
                 case '-':
-                    resultado = Subtrair(valor1, valor2);
-                    Console.WriteLine($"Resultado da Subtracao de {valor1} por {valor2}: {resultado}");
+                    result = Subtraction();
+                    Console.WriteLine($"Subtraction Result :{result}");
                     break;
 
                 case '/':
-                    resultado = Dividir(valor1, valor2);
-                    Console.WriteLine($"Resultado da Divisao de {valor1} por {valor2}: {resultado}");
+                    result = Division();
+                    Console.WriteLine($"Division Result:{result}");
                     break;
 
                 case '*':
-                    resultado = Multiplicar(valor1, valor2);
-                    Console.WriteLine($"Resultado da Multiplicacao de {valor1} por {valor2}: {resultado}");
-                    break;
-
-                case 'r':
-                    resultado = Resto(valor1, valor2);
-                    Console.WriteLine($"Resto da divisao de {valor1} por {valor2}: {resultado}");
-                    break;
-
-                case '=':
-                    Comparar(valor1, valor2);
+                    result = Multiplication();
+                    Console.WriteLine($"Multiplication Result:{result}");
                     break;
 
                 default:
-                    {
-                        Console.WriteLine("Insira uma operação válida");
-                        break;
-                    }
+                    Console.WriteLine("Enter a valid operation");
+                    break;
             }
         }
 
-        /// <summary>
-        /// Comparars the specified a.
-        /// </summary>
-        /// <param name="a">a.</param>
-        /// <param name="b">The b.</param>
-        private static void Comparar(double a, double b)
+        private static double Division()
         {
-            if (a > b)
+            double value;
+            double temp = 0;
+            double division = 0;
+            int i = 1;
+
+            Console.WriteLine("1o value:");
+            value = double.Parse(Console.ReadLine());
+            temp = value;
+            while (value != 0)
             {
-                Console.WriteLine($"{a} é maior que {b}");
+                i++;
+                Console.WriteLine($"{i}o value:");
+                value = double.Parse(Console.ReadLine());
+                temp /= value;
             }
-            if (a < b)
+
+            return division = temp;
+        }
+
+        private static double Multiplication()
+        {
+            double value;
+            double multiplication = 1;
+            int i = 1;
+
+            Console.WriteLine("1o value:");
+            value = double.Parse(Console.ReadLine());
+            while (value != 0)
             {
-                Console.WriteLine($"{a} é menor {b}");
+                i++;
+                multiplication *= value;
+                Console.WriteLine($"{i}o value:");
+                value = double.Parse(Console.ReadLine());
             }
-            if (a == b)
+
+            return multiplication;
+        }
+
+        private static double Subtraction()
+        {
+            double value = 0;
+            double subtraction = 0;
+            int i = 1;
+
+            Console.WriteLine("1o value:");
+            value = double.Parse(Console.ReadLine());
+            subtraction = value;
+            while (value != 0)
             {
-                Console.WriteLine($"{a} é igual a {b}");
+                i++;
+                Console.WriteLine($"{i}o value:");
+                value = double.Parse(Console.ReadLine());
+                subtraction -= value;
             }
+
+            return subtraction;
         }
 
-        /// <summary>
-        /// Dividirs the specified a.
-        /// </summary>
-        /// <param name="a">a.</param>
-        /// <param name="b">The b.</param>
-        /// <returns></returns>
-        private static double Dividir(double a, double b)
+        private static double Sum()
         {
-            return a / b;
-        }
+            double value;
+            double sum = 0;
+            int i = 1;
 
-        /// <summary>
-        /// Multiplicars the specified a.
-        /// </summary>
-        /// <param name="a">a.</param>
-        /// <param name="b">The b.</param>
-        /// <returns></returns>
-        private static double Multiplicar(double a, double b)
-        {
-            return a * b;
-        }
+            Console.WriteLine("1o value:");
+            value = double.Parse(Console.ReadLine());
 
-        /// <summary>
-        /// Restoes the specified a.
-        /// </summary>
-        /// <param name="a">a.</param>
-        /// <param name="b">The b.</param>
-        /// <returns></returns>
-        private static double Resto(double a, double b)
-        {
-            return a % b;
-        }
+            while (value != 0)
+            {
+                i++;
+                sum += value;
+                Console.WriteLine($"{i}o value:");
+                value = double.Parse(Console.ReadLine());
+            }
 
-        /// <summary>
-        /// Somars the specified a.
-        /// </summary>
-        /// <param name="a">a.</param>
-        /// <param name="b">The b.</param>
-        /// <returns></returns>
-        private static double Somar(double a, double b)
-        {
-            return a + b;
-        }
-
-        /// <summary>
-        /// Subtrairs the specified a.
-        /// </summary>
-        /// <param name="a">a.</param>
-        /// <param name="b">The b.</param>
-        /// <returns></returns>
-        private static double Subtrair(double a, double b)
-        {
-            return a - b;
+            return sum;
         }
     }
 }
