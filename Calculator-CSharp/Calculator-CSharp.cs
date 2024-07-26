@@ -44,39 +44,48 @@
         private static double Division()
         {
             double value;
-            double temp = 0;
-            double division = 0;
-            int i = 1;
+            double division = 1;
+            int i = 0;
 
-            Console.WriteLine("1o value:");
-            value = double.Parse(Console.ReadLine());
-            temp = value;
-            while (value != 0)
+            do
             {
                 i++;
                 Console.WriteLine($"{i}o value:");
                 value = double.Parse(Console.ReadLine());
-                temp /= value;
+                if (value != 0)
+                {
+                    if (i == 1)
+                    {
+                        division *= value;
+                    }
+                    if (i > 1)
+                    {
+                        division /= value;
+                    }
+                }
             }
+            while (value != 0);
 
-            return division = temp;
+            return division;
         }
 
         private static double Multiplication()
         {
             double value;
             double multiplication = 1;
-            int i = 1;
+            int i = 0;
 
-            Console.WriteLine("1o value:");
-            value = double.Parse(Console.ReadLine());
-            while (value != 0)
+            do
             {
                 i++;
-                multiplication *= value;
                 Console.WriteLine($"{i}o value:");
                 value = double.Parse(Console.ReadLine());
+                if (value != 0)
+                {
+                    multiplication *= value;
+                }
             }
+            while (value != 0);
 
             return multiplication;
         }
@@ -85,18 +94,24 @@
         {
             double value = 0;
             double subtraction = 0;
-            int i = 1;
+            int i = 0;
 
-            Console.WriteLine("1o value:");
-            value = double.Parse(Console.ReadLine());
-            subtraction = value;
-            while (value != 0)
+            do
             {
                 i++;
                 Console.WriteLine($"{i}o value:");
                 value = double.Parse(Console.ReadLine());
-                subtraction -= value;
+
+                if (i == 1)
+                {
+                    subtraction += value;
+                }
+                if (i > 1)
+                {
+                    subtraction -= value;
+                }
             }
+            while (value != 0);
 
             return subtraction;
         }
@@ -105,18 +120,16 @@
         {
             double value = 0;
             double sum = 0;
-            int i = 1;
+            int i = 0;
 
-            Console.WriteLine("1o value:");
-            value = double.Parse(Console.ReadLine());
-
-            while (value != 0)
+            do
             {
                 i++;
-                sum += value;
                 Console.WriteLine($"{i}o value:");
                 value = double.Parse(Console.ReadLine());
+                sum += value;
             }
+            while (value != 0);
 
             return sum;
         }
