@@ -103,7 +103,7 @@
 
         private static double Sum()
         {
-            double value;
+            double value = 0;
             double sum = 0;
             int i = 1;
 
