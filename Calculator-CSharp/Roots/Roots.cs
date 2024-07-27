@@ -1,13 +1,6 @@
-﻿namespace Calculator_CSharp
+﻿namespace Calculator_CSharp.Roots
 {
     using System;
-
-    public interface IRoots
-    {
-        double CubeRoot(double a);
-
-        double SquareRoot(double a);
-    }
 
     public class Roots : IRoots
     {
@@ -17,6 +10,7 @@
             {
                 return 0;
             }
+
             return Math.Cbrt(a);
         }
 
@@ -26,7 +20,8 @@
             {
                 return 0;
             }
-            return Math.Sqrt(Math.Sqrt(a));
+
+            return Math.Sqrt(a);
         }
     }
 }

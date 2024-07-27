@@ -1,23 +1,38 @@
 ﻿namespace Calculator
 {
-    using Calculator_CSharp;
+    using Calculator_CSharp.BasicOperations;
+    using Calculator_CSharp.Powers;
+    using Calculator_CSharp.Roots;
+    using Calculator_CSharp.Verify;
     using System;
 
     internal class Calculator
     {
         public static void Main(string[] args)
         {
-            BasicOperations bOperations = new BasicOperations();
+            BasicOperations basicOperations = new BasicOperations();
             Powers powersOperations = new Powers();
             Roots rootsOperations = new Roots();
             Verify verifyOperations = new Verify();
 
             Console.WriteLine("Calculator");
-            Console.WriteLine("+  Sum \n-  Subtraction \n/  Division \n*  Multiplication \nr  Rest \n=  Compare \ne  Even \np  Prime \nf  Factorial \ns  Square \nc  Cube \nS  SquareRoot \nC  CubeRoot");
+            Console.WriteLine("+  Sum");
+            Console.WriteLine("-  Subtraction");
+            Console.WriteLine("/  Division");
+            Console.WriteLine("*  Multiplication");
+            Console.WriteLine("r  Rest");
+            Console.WriteLine("=  Compare");
+            Console.WriteLine("e  Even");
+            Console.WriteLine("p  Prime");
+            Console.WriteLine("f  Factorial");
+            Console.WriteLine("s  Square");
+            Console.WriteLine("c  Cube");
+            Console.WriteLine("S  SquareRoot");
+            Console.WriteLine("C  CubeRoot");
             Console.WriteLine("Enter the symbol of the desired operation:");
-            char operation = Console.ReadLine()[0];
+            char operation = (char)Console.ReadLine()[0];
 
-            int value;
+            int value = 0;
             double value1 = 0;
             double value2 = 0;
             double result = 0;
@@ -30,7 +45,8 @@
 
                     Console.WriteLine("value 2:");
                     value2 = Convert.ToDouble(Console.ReadLine());
-                    result = bOperations.Sum(value1, value2);
+
+                    result = basicOperations.Sum(value1, value2);
                     Console.WriteLine($"Result of the Sum from {value1} by {value2}: {result}");
                     break;
 
@@ -40,8 +56,9 @@
 
                     Console.WriteLine("value 2:");
                     value2 = Convert.ToDouble(Console.ReadLine());
-                    result = bOperations.Subtract(value1, value2);
-                    Console.WriteLine($"result of Subtraction of {value1} by {value2}: {result}");
+
+                    result = basicOperations.Subtract(value1, value2);
+                    Console.WriteLine($"Result of the Subtraction from {value1} by {value2}: {result}");
                     break;
 
                 case '/':
@@ -50,8 +67,9 @@
 
                     Console.WriteLine("value 2:");
                     value2 = Convert.ToDouble(Console.ReadLine());
-                    result = bOperations.Divide(value1, value2);
-                    Console.WriteLine($"result of Dividing {value1} by {value2}: {result}");
+
+                    result = basicOperations.Divide(value1, value2);
+                    Console.WriteLine($"Result of the Division from {value1} by {value2}: {result}");
                     break;
 
                 case '*':
@@ -60,8 +78,9 @@
 
                     Console.WriteLine("value 2:");
                     value2 = Convert.ToDouble(Console.ReadLine());
-                    result = bOperations.Multiply(value1, value2);
-                    Console.WriteLine($"result of Multiplication of {value1} by {value2}: {result}");
+
+                    result = basicOperations.Multiply(value1, value2);
+                    Console.WriteLine($"Result of Multiplication from {value1} by {value2}: {result}");
                     break;
 
                 case 'r':
@@ -71,8 +90,8 @@
                     Console.WriteLine("value 2:");
                     value2 = Convert.ToDouble(Console.ReadLine());
 
-                    result = bOperations.Rest(value1, value2);
-                    Console.WriteLine($"Rest of the division of {value1} by {value2}: {result}");
+                    result = basicOperations.Rest(value1, value2);
+                    Console.WriteLine($"Rest of the Division ftom {value1} by {value2}: {result}");
                     break;
 
                 case '=':
@@ -81,54 +100,58 @@
 
                     Console.WriteLine("value 2:");
                     value2 = Convert.ToDouble(Console.ReadLine());
-                    verifyOperations.Compare(value1, value2);
+
+                    string compare = verifyOperations.Compare(value1, value2);
+                    Console.WriteLine(compare);
                     break;
 
                 case 'e':
                     Console.WriteLine("value:");
                     value = Convert.ToInt32(Console.ReadLine());
-                    verifyOperations.VerifyEven(value);
+
                     if (verifyOperations.VerifyEven(value) == true)
                     {
-                        Console.WriteLine("The number is even.");
+                        Console.WriteLine("The Number is Even.");
+                        break;
                     }
-                    if (verifyOperations.VerifyEven(value) == false)
-                    {
-                        Console.WriteLine("The number is odd.");
-                    }
+
+                    Console.WriteLine("The Number is Odd.");
+
                     break;
 
                 case 'p':
                     Console.WriteLine("value:");
                     value = Convert.ToInt32(Console.ReadLine());
-                    verifyOperations.VerifyPrime(value);
-                    if (verifyOperations.VerifyEven(value) == false)
+
+                    if (verifyOperations.VerifyPrime(value) == false)
                     {
-                        Console.WriteLine("The number is prime.");
+                        Console.WriteLine("The Number is Prime.");
+                        break;
                     }
-                    if (verifyOperations.VerifyEven(value) == true)
-                    {
-                        Console.WriteLine("The number is not prime.");
-                    }
+
+                    Console.WriteLine("The Number is not Prime.");
                     break;
 
                 case 'f':
                     Console.WriteLine("value:");
                     value = Convert.ToInt32(Console.ReadLine());
-                    result = bOperations.Factorial(value);
-                    Console.WriteLine($"The value of {value} in Factorial is {result}");
+
+                    result = basicOperations.Factorial(value);
+                    Console.WriteLine($"The Value of {value} in Factorial is {result}");
                     break;
 
                 case 's':
                     Console.WriteLine("value:");
                     value1 = Convert.ToDouble(Console.ReadLine());
+
                     result = powersOperations.Square(value1);
-                    Console.WriteLine($"The frame of {value1} is {result}");
+                    Console.WriteLine($"The Frame of {value1} is {result}");
                     break;
 
                 case 'c':
                     Console.WriteLine("value:");
                     value1 = Convert.ToDouble(Console.ReadLine());
+
                     result = powersOperations.Cube(value1);
                     Console.WriteLine($"The Cube of {value1} is {result}");
                     break;
@@ -136,15 +159,17 @@
                 case 'S':
                     Console.WriteLine("value:");
                     value1 = Convert.ToDouble(Console.ReadLine());
+
                     result = rootsOperations.SquareRoot(value1);
-                    Console.WriteLine($"The square root of {value1} is {result}");
+                    Console.WriteLine($"The Square Root of {value1} is {result}");
                     break;
 
                 case 'C':
                     Console.WriteLine("value:");
                     value1 = Convert.ToDouble(Console.ReadLine());
+
                     result = rootsOperations.CubeRoot(value1);
-                    Console.WriteLine($"The cube root of {value1} is {result}");
+                    Console.WriteLine($"The Cube Root of {value1} is {result}");
                     break;
 
                 default:

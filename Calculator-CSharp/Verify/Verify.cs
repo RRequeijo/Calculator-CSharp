@@ -1,29 +1,20 @@
-﻿namespace Calculator_CSharp
+﻿namespace Calculator_CSharp.Verify
 {
-    public interface IVerify
-    {
-        void Compare(double a, double b);
-
-        bool VerifyEven(int a);
-
-        bool VerifyPrime(int a);
-    }
-
     public class Verify : IVerify
     {
-        public void Compare(double a, double b)
+        public string Compare(double a, double b)
         {
             if (a > b)
             {
-                Console.WriteLine($"{a} is greater than {b}");
-                return;
+                return $"{a} is greater than {b}";
             }
+
             if (a < b)
             {
-                Console.WriteLine($"{a} is smaller {b}");
-                return;
+                return $"{a} is smaller than{b}";
             }
-            Console.WriteLine($"{a} is equal to {b}");
+
+            return $"{a} is equal to {b}";
         }
 
         public bool VerifyEven(int a)
@@ -45,6 +36,7 @@
                     return false;
                 }
             }
+
             return true;
         }
     }

@@ -1,12 +1,5 @@
-﻿namespace Calculator_CSharp
+﻿namespace Calculator_CSharp.Powers
 {
-    public interface IPowers
-    {
-        double Cube(double a);
-
-        double Square(double a);
-    }
-
     public class Powers : IPowers
     {
         public double Cube(double a)
