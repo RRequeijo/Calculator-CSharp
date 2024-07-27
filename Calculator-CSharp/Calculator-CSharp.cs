@@ -80,7 +80,7 @@
                     value2 = Convert.ToDouble(Console.ReadLine());
 
                     result = basicOperations.Multiply(value1, value2);
-                    Console.WriteLine($"Result of Multiplication from {value1} by {value2}: {result}");
+                    Console.WriteLine($"Result of the Multiplication from {value1} by {value2}: {result}");
                     break;
 
                 case 'r':
@@ -91,7 +91,7 @@
                     value2 = Convert.ToDouble(Console.ReadLine());
 
                     result = basicOperations.Rest(value1, value2);
-                    Console.WriteLine($"Rest of the Division ftom {value1} by {value2}: {result}");
+                    Console.WriteLine($"Rest of the Division from {value1} by {value2}: {result}");
                     break;
 
                 case '=':
@@ -129,7 +129,7 @@
                         break;
                     }
 
-                    Console.WriteLine("The Number is not Prime.");
+                    Console.WriteLine("The Number is Not Prime.");
                     break;
 
                 case 'f':
