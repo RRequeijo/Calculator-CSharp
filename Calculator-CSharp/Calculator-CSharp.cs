@@ -101,8 +101,8 @@
                     Console.WriteLine("value 2:");
                     value2 = Convert.ToDouble(Console.ReadLine());
 
-                    string compare = verifyOperations.Compare(value1, value2);
-                    Console.WriteLine(compare);
+                    string comparisonResult = verifyOperations.Compare(value1, value2);
+                    Console.WriteLine(comparisonResult);
                     break;
 
                 case 'e':
