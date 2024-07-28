@@ -40,47 +40,23 @@
             switch (operation)
             {
                 case '+':
-                    Console.WriteLine("value 1:");
-                    value1 = Convert.ToDouble(Console.ReadLine());
-
-                    Console.WriteLine("value 2:");
-                    value2 = Convert.ToDouble(Console.ReadLine());
-
-                    result = basicOperations.Sum(value1, value2);
-                    Console.WriteLine($"Result of the Sum from {value1} by {value2}: {result}");
+                    result = basicOperations.Sum();
+                    Console.WriteLine($"Sum Result:{result}");
                     break;
 
                 case '-':
-                    Console.WriteLine("value 1:");
-                    value1 = Convert.ToDouble(Console.ReadLine());
-
-                    Console.WriteLine("value 2:");
-                    value2 = Convert.ToDouble(Console.ReadLine());
-
-                    result = basicOperations.Subtract(value1, value2);
-                    Console.WriteLine($"Result of the Subtraction from {value1} by {value2}: {result}");
+                    result = basicOperations.Subtract();
+                    Console.WriteLine($"Subtraction Result :{result}");
                     break;
 
                 case '/':
-                    Console.WriteLine("value 1:");
-                    value1 = Convert.ToDouble(Console.ReadLine());
-
-                    Console.WriteLine("value 2:");
-                    value2 = Convert.ToDouble(Console.ReadLine());
-
-                    result = basicOperations.Divide(value1, value2);
-                    Console.WriteLine($"Result of the Division from {value1} by {value2}: {result}");
+                    result = basicOperations.Divide();
+                    Console.WriteLine($"Division Result:{result}");
                     break;
 
                 case '*':
-                    Console.WriteLine("value 1:");
-                    value1 = Convert.ToDouble(Console.ReadLine());
-
-                    Console.WriteLine("value 2:");
-                    value2 = Convert.ToDouble(Console.ReadLine());
-
-                    result = basicOperations.Multiply(value1, value2);
-                    Console.WriteLine($"Result of the Multiplication from {value1} by {value2}: {result}");
+                    result = basicOperations.Multiply();
+                    Console.WriteLine($"Multiplication Result:{result}");
                     break;
 
                 case 'r':
@@ -116,7 +92,6 @@
                     }
 
                     Console.WriteLine("The Number is Odd.");
-
                     break;
 
                 case 'p':
