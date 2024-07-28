@@ -7,13 +7,16 @@
         public static void Main(string[] args)
         {
             Console.WriteLine("Calculator");
-            Console.WriteLine("+  Sum \n-  Subtraction \n/  Division \n*  Multiplication");
+            Console.WriteLine("+  Sum");
+            Console.WriteLine("-  Subtraction");
+            Console.WriteLine("/  Division ");
+            Console.WriteLine("*  Multiplication");
             Console.WriteLine("Enter the symbol of the desired operation(enter 0 to end): \n");
-            char operacao = Console.ReadLine()[0];
+            char operation = Console.ReadLine()[0];
 
             double result = 0;
 
-            switch (operacao)
+            switch (operation)
             {
                 case '+':
                     result = Sum();
@@ -43,8 +46,8 @@
 
         private static double Division()
         {
-            double value;
-            double division = 1;
+            double value = 0;
+            double division = 0;
             int i = 0;
 
             do
@@ -52,12 +55,14 @@
                 i++;
                 Console.WriteLine($"{i}o value:");
                 value = double.Parse(Console.ReadLine());
+
                 if (value != 0)
                 {
                     if (i == 1)
                     {
-                        division *= value;
+                        division = value;
                     }
+
                     if (i > 1)
                     {
                         division /= value;
@@ -80,6 +85,7 @@
                 i++;
                 Console.WriteLine($"{i}o value:");
                 value = double.Parse(Console.ReadLine());
+
                 if (value != 0)
                 {
                     multiplication *= value;
@@ -104,8 +110,9 @@
 
                 if (i == 1)
                 {
-                    subtraction += value;
+                    subtraction = value;
                 }
+
                 if (i > 1)
                 {
                     subtraction -= value;
