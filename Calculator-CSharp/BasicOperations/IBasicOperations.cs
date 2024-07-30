@@ -1,17 +1,9 @@
-﻿namespace Calculator_CSharp.BasicOperations
+﻿namespace Calculator_CSharp.Priority
 {
     public interface IBasicOperations
     {
-        double Divide();
+        public string DivisionAndMultiplication(string equation);
 
-        int Factorial(int a);
-
-        double Multiply();
-
-        double Rest(double a, double b);
-
-        double Subtract();
-
-        double Sum();
+        public double SubtractionAndAdiction(string equation);
     }
 }
