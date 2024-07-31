@@ -18,6 +18,7 @@
                         value1String = equation[i] + value1String;
                         break;
                     }
+
                     break;
                 }
 
@@ -27,6 +28,7 @@
                     {
                         value2String += equation[i];
                     }
+
                     break;
                 }
 
