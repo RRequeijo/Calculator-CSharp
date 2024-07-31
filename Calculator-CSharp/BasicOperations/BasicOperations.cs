@@ -2,118 +2,74 @@
 {
     public class BasicOperations : IBasicOperations
     {
-        public double Divide()
+        public double DivisionAndMultiplication(string equation)
         {
-            double value = 0;
-            double division = 0;
             int i = 0;
-
-            do
+            string valueAfter = string.Empty;
+            string valueBefore = string.Empty;
+            double result = 0;
+            while (i < equation.Length)
             {
-                i++;
-                Console.WriteLine($"{i}o value:");
-                value = double.Parse(Console.ReadLine());
-
-                if (value != 0)
+                if (equation[i] == '/')
                 {
-                    if (i == 1)
+                    i++;
+                    while (i < equation.Length)
                     {
-                        division = value;
+                        if (equation[i] == '*' || equation[i] == '/' || equation[i] == '-' || equation[i] == '+')
+                        {
+                            break;
+                        }
+                        valueBefore = equation[i] + valueBefore;
+                        i++;
                     }
 
-                    if (i > 1)
+                    int j = i - 1;
+                    while (j >= 0)
                     {
-                        division /= value;
+                        if (equation[j] == '*' || equation[j] == '/' || equation[j] == '-' || equation[j] == '+')
+                        {
+                            break;
+                        }
+                        valueBefore = equation[i] + valueBefore;
+                        j--;
                     }
+                    double after = Convert.ToDouble(valueAfter);
+                    double before = Convert.ToDouble(valueBefore);
+
+                    result = before / after;
+                    break;
                 }
-            }
-            while (value != 0);
 
-            return division;
-        }
-
-        public int Factorial(int a)
-        {
-            int total = a;
-
-            for (int i = a - 1; i >= 1; i--)
-            {
-                total *= i;
-            }
-
-            return total;
-        }
-
-        public double Multiply()
-        {
-            double value;
-            double multiplication = 1;
-            int i = 0;
-
-            do
-            {
-                i++;
-                Console.WriteLine($"{i}o value:");
-                value = double.Parse(Console.ReadLine());
-
-                if (value != 0)
+                if (equation[i] == '*')
                 {
-                    multiplication *= value;
+                    i++;
+                    while (i < equation.Length)
+                    {
+                        if (equation[i] == '*' || equation[i] == '/' || equation[i] == '-' || equation[i] == '+')
+                        {
+                            break;
+                        }
+                        valueAfter = equation[i] + valueAfter;
+                        i++;
+                    }
+                    while (i < equation.Length)
+                    {
+                        if (equation[i] == '*' || equation[i] == '/' || equation[i] == '-' || equation[i] == '+')
+                        {
+                            break;
+                        }
+                        valueAfter = equation[i] + valueAfter;
+                        i++;
+                    }
+                    double after = Convert.ToDouble(valueAfter);
+                    double before = Convert.ToDouble(valueBefore);
+
+                    result = before * after;
+                    break;
                 }
-            }
-            while (value != 0);
-
-            return multiplication;
-        }
-
-        public double Rest(double a, double b)
-        {
-            return a % b;
-        }
-
-        public double Subtract()
-        {
-            double value = 0;
-            double subtraction = 0;
-            int i = 0;
-
-            do
-            {
                 i++;
-                Console.WriteLine($"{i}o value:");
-                value = double.Parse(Console.ReadLine());
-
-                if (i == 1)
-                {
-                    subtraction = value;
-                }
-
-                if (i > 1)
-                {
-                    subtraction -= value;
-                }
             }
-            while (value != 0);
-
-            return subtraction;
-        }
-
-        public double Sum()
-        {
-            double value = 0;
-            double sum = 0;
-            int i = 0;
-
-            do
-            {
-                i++;
-                Console.WriteLine($"{i}o value:");
-                value = double.Parse(Console.ReadLine());
-                sum += value;
-            }
-            while (value != 0);
-
-            return sum;
+            return result;
         }
     }
 }
