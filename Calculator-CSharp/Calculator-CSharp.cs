@@ -1,8 +1,8 @@
 ﻿namespace Calculator
 {
+    using Calculator_CSharp.BasicOperations;
     using Calculator_CSharp.FactorialAndRest;
     using Calculator_CSharp.Powers;
-    using Calculator_CSharp.Priority;
     using Calculator_CSharp.Roots;
     using Calculator_CSharp.Verify;
     using System;

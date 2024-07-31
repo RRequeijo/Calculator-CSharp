@@ -2,6 +2,6 @@
 {
     public interface IFindNumbers
     {
-        public (double, double) FindValues(string equation, int start, char symbol);
+        (double, double) FindValues(string equation, int start, char symbol);
     }
 }

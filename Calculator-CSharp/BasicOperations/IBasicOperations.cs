@@ -1,11 +1,11 @@
-﻿namespace Calculator_CSharp.Priority
+﻿namespace Calculator_CSharp.BasicOperations
 {
     public interface IBasicOperations
     {
-        public double CalculateFinalResult(string equation);
+        double CalculateFinalResult(string equation);
 
-        public string DivisionAndMultiplication(string equation);
+        string DivisionAndMultiplication(string equation);
 
-        public double SubtractionAndAdiction(string equation);
+        double SubtractionAndAdiction(string equation);
     }
 }

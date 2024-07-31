@@ -1,11 +1,13 @@
-﻿namespace Calculator_CSharp.Priority
+﻿namespace Calculator_CSharp.BasicOperations
 {
     using Calculator_CSharp.FindNumbers;
+    using Calculator_CSharp.OperationAux;
     using System.Text;
 
     public class BasicOperations : IBasicOperations
     {
-        public FindNumbers findNumbers = new FindNumbers();
+        private FindNumbers findNumbers = new FindNumbers();
+        private OperationAux operationAux = new OperationAux();
 
         public double CalculateFinalResult(string equation)
         {
@@ -42,14 +44,7 @@
                         currentResult = value1 / value2;
                     }
 
-                    string value1String = value1.ToString();
-                    string value2String = value2.ToString();
-                    string symbolString = symbol.ToString();
-                    string currentResultString = currentResult.ToString();
-
-                    equation = equation.Replace($"{value1String}{symbolString}{value2String}", $"{currentResultString}");
-
-                    newEquation = new StringBuilder(equation);
+                    equation = operationAux.UpdateEquation(equation, value1, value2, symbol, currentResult, i);
 
                     i = 0;
                 }
@@ -57,7 +52,7 @@
                 i++;
             }
 
-            return newEquation.ToString();
+            return equation.ToString();
         }
 
         public double SubtractionAndAdiction(string equation)
@@ -65,6 +60,7 @@
             StringBuilder finalResult = new StringBuilder(equation);
             int i = 0;
             double currentResult = 0;
+            string expression;
 
             while (i < equation.Length)
             {
@@ -86,21 +82,13 @@
                         currentResult = value1 + value2;
                     }
 
-                    string value1String = value1.ToString();
-                    string value2String = value2.ToString();
-                    string symbolString = symbol.ToString();
-                    string currentResultString = currentResult.ToString();
-
-                    equation = equation.Replace($"{value1String}{symbolString}{value2String}", $"{currentResultString}");
-
-                    finalResult = new StringBuilder(equation);
+                    equation = operationAux.UpdateEquation(equation, value1, value2, symbol, currentResult, i);
 
                     i = 0;
                 }
                 i++;
             }
-
-            return double.Parse(finalResult.ToString());
+            return double.Parse(equation.ToString());
         }
     }
 }
