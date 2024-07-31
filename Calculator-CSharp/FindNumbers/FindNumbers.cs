@@ -18,10 +18,7 @@
                         value1String = equation[i] + value1String;
                         break;
                     }
-                    else
-                    {
-                        break;
-                    }
+                    break;
                 }
 
                 for (int i = start + 1; i < equation.Length; i++)
@@ -30,10 +27,7 @@
                     {
                         value2String += equation[i];
                     }
-                    else
-                    {
-                        break;
-                    }
+                    break;
                 }
 
                 value1 = double.Parse(value1String);

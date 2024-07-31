@@ -41,12 +41,13 @@
                 case 'B':
                     Console.WriteLine("Enter the equation:");
                     string expression = Console.ReadLine();
+                    Console.WriteLine("Expression entered: " + expression);
 
                     string newEquation = basicOperations.DivisionAndMultiplication(expression);
-                    Console.WriteLine("Result: " + newEquation);
+                    Console.WriteLine("Result1: " + newEquation);
 
-                    result = basicOperations.SubtractionAndAdiction(newEquation);
-                    Console.WriteLine("Result: " + result);
+                    result = basicOperations.CalculateFinalResult(expression);
+                    Console.WriteLine("Final Result: " + result);
 
                     break;
 
