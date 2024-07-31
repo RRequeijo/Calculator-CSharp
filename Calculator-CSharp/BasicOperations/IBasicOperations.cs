@@ -2,16 +2,10 @@
 {
     public interface IBasicOperations
     {
-        double Divide();
+        double CalculateFinalResult(string equation);
 
-        int Factorial(int a);
+        string DivisionAndMultiplication(string equation);
 
-        double Multiply();
-
-        double Rest(double a, double b);
-
-        double Subtract();
-
-        double Sum();
+        double SubtractionAndAdiction(string equation);
     }
 }

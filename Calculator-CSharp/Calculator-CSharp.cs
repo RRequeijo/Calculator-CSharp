@@ -1,6 +1,7 @@
 ﻿namespace Calculator
 {
     using Calculator_CSharp.BasicOperations;
+    using Calculator_CSharp.FactorialAndRest;
     using Calculator_CSharp.Powers;
     using Calculator_CSharp.Roots;
     using Calculator_CSharp.Verify;
@@ -10,16 +11,14 @@
     {
         public static void Main(string[] args)
         {
-            BasicOperations basicOperations = new BasicOperations();
             Powers powersOperations = new Powers();
             Roots rootsOperations = new Roots();
             Verify verifyOperations = new Verify();
+            BasicOperations basicOperations = new BasicOperations();
+            FactorialAndRest factorialAndRestOperations = new FactorialAndRest();
 
             Console.WriteLine("Calculator");
-            Console.WriteLine("+  Sum");
-            Console.WriteLine("-  Subtraction");
-            Console.WriteLine("/  Division");
-            Console.WriteLine("*  Multiplication");
+            Console.WriteLine("B  Basic Operation");
             Console.WriteLine("r  Rest");
             Console.WriteLine("=  Compare");
             Console.WriteLine("e  Even");
@@ -30,7 +29,7 @@
             Console.WriteLine("S  SquareRoot");
             Console.WriteLine("C  CubeRoot");
             Console.WriteLine("Enter the symbol of the desired operation:");
-            char operation = (char)Console.ReadLine()[0];
+            char operation = Console.ReadLine()[0];
 
             int value = 0;
             double value1 = 0;
@@ -39,24 +38,17 @@
 
             switch (operation)
             {
-                case '+':
-                    result = basicOperations.Sum();
-                    Console.WriteLine($"Sum Result:{result}");
-                    break;
+                case 'B':
+                    Console.WriteLine("Enter the equation:");
+                    string expression = Console.ReadLine();
+                    Console.WriteLine("Expression entered: " + expression);
 
-                case '-':
-                    result = basicOperations.Subtract();
-                    Console.WriteLine($"Subtraction Result :{result}");
-                    break;
+                    string newEquation = basicOperations.DivisionAndMultiplication(expression);
+                    Console.WriteLine("Result1: " + newEquation);
 
-                case '/':
-                    result = basicOperations.Divide();
-                    Console.WriteLine($"Division Result:{result}");
-                    break;
+                    result = basicOperations.CalculateFinalResult(expression);
+                    Console.WriteLine("Final Result: " + result);
 
-                case '*':
-                    result = basicOperations.Multiply();
-                    Console.WriteLine($"Multiplication Result:{result}");
                     break;
 
                 case 'r':
@@ -66,7 +58,7 @@
                     Console.WriteLine("value 2:");
                     value2 = Convert.ToDouble(Console.ReadLine());
 
-                    result = basicOperations.Rest(value1, value2);
+                    result = factorialAndRestOperations.Rest(value1, value2);
                     Console.WriteLine($"Rest of the Division from {value1} by {value2}: {result}");
                     break;
 
@@ -111,7 +103,7 @@
                     Console.WriteLine("value:");
                     value = Convert.ToInt32(Console.ReadLine());
 
-                    result = basicOperations.Factorial(value);
+                    result = factorialAndRestOperations.Factorial(value);
                     Console.WriteLine($"The Value of {value} in Factorial is {result}");
                     break;
 

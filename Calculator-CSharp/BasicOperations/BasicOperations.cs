@@ -1,119 +1,94 @@
 ﻿namespace Calculator_CSharp.BasicOperations
 {
+    using Calculator_CSharp.FindNumbers;
+    using Calculator_CSharp.OperationAux;
+    using System.Text;
+
     public class BasicOperations : IBasicOperations
     {
-        public double Divide()
+        private FindNumbers findNumbers = new FindNumbers();
+        private OperationAux operationAux = new OperationAux();
+
+        public double CalculateFinalResult(string equation)
         {
-            double value = 0;
-            double division = 0;
+            string priority1stOperations = DivisionAndMultiplication(equation);
+
+            double priority2ndOperations = SubtractionAndAdiction(priority1stOperations);
+
+            return priority2ndOperations;
+        }
+
+        public string DivisionAndMultiplication(string equation)
+        {
+            StringBuilder newEquation = new StringBuilder();
+            double currentResult = 0;
             int i = 0;
 
-            do
+            while (i < equation.Length)
             {
-                i++;
-                Console.WriteLine($"{i}o value:");
-                value = double.Parse(Console.ReadLine());
-
-                if (value != 0)
+                if (equation[i] == '*' || equation[i] == '/')
                 {
-                    if (i == 1)
+                    char symbol = equation[i];
+                    var values = findNumbers.FindValues(equation, i, symbol);
+
+                    double value1 = values.Item1;
+                    double value2 = values.Item2;
+
+                    if (symbol == '*')
                     {
-                        division = value;
+                        currentResult = value1 * value2;
                     }
 
-                    if (i > 1)
+                    if (symbol == '/')
                     {
-                        division /= value;
+                        currentResult = value1 / value2;
                     }
+
+                    equation = operationAux.UpdateEquation(equation, value1, value2, symbol, currentResult, i);
+
+                    i = 0;
                 }
-            }
-            while (value != 0);
 
-            return division;
-        }
-
-        public int Factorial(int a)
-        {
-            int total = a;
-
-            for (int i = a - 1; i >= 1; i--)
-            {
-                total *= i;
-            }
-
-            return total;
-        }
-
-        public double Multiply()
-        {
-            double value;
-            double multiplication = 1;
-            int i = 0;
-
-            do
-            {
                 i++;
-                Console.WriteLine($"{i}o value:");
-                value = double.Parse(Console.ReadLine());
-
-                if (value != 0)
-                {
-                    multiplication *= value;
-                }
             }
-            while (value != 0);
 
-            return multiplication;
+            return equation.ToString();
         }
 
-        public double Rest(double a, double b)
+        public double SubtractionAndAdiction(string equation)
         {
-            return a % b;
-        }
-
-        public double Subtract()
-        {
-            double value = 0;
-            double subtraction = 0;
+            StringBuilder finalResult = new StringBuilder(equation);
             int i = 0;
+            double currentResult = 0;
+            string expression;
 
-            do
+            while (i < equation.Length)
             {
-                i++;
-                Console.WriteLine($"{i}o value:");
-                value = double.Parse(Console.ReadLine());
-
-                if (i == 1)
+                if (equation[i] == '-' || equation[i] == '+')
                 {
-                    subtraction = value;
+                    char symbol = equation[i];
+                    var values = findNumbers.FindValues(equation, i, symbol);
+
+                    double value1 = values.Item1;
+                    double value2 = values.Item2;
+
+                    if (symbol == '-')
+                    {
+                        currentResult = value1 - value2;
+                    }
+
+                    if (symbol == '+')
+                    {
+                        currentResult = value1 + value2;
+                    }
+
+                    equation = operationAux.UpdateEquation(equation, value1, value2, symbol, currentResult, i);
+
+                    i = 0;
                 }
-
-                if (i > 1)
-                {
-                    subtraction -= value;
-                }
-            }
-            while (value != 0);
-
-            return subtraction;
-        }
-
-        public double Sum()
-        {
-            double value = 0;
-            double sum = 0;
-            int i = 0;
-
-            do
-            {
                 i++;
-                Console.WriteLine($"{i}o value:");
-                value = double.Parse(Console.ReadLine());
-                sum += value;
             }
-            while (value != 0);
-
-            return sum;
+            return double.Parse(equation.ToString());
         }
     }
 }
